@@ -8,6 +8,8 @@
    1. Tokens
    -------------------------------------------------------------------------- */
 :root {
+  color-scheme: dark;
+
   /* tinta */
   --ink-900: #060B14;
   --ink-800: #0B1220;
@@ -293,7 +295,7 @@ h1 + .lede, h2 + .lede, h3 + .lede { margin-top: 1.2rem; }
    -------------------------------------------------------------------------- */
 .nav {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 100;
   background: rgba(6, 11, 20, 0.78);
   backdrop-filter: blur(14px);
@@ -1250,14 +1252,12 @@ h1 + .lede, h2 + .lede, h3 + .lede { margin-top: 1.2rem; }
 .foot-base a:hover { color: var(--amber); }
 
 /* --------------------------------------------------------------------------
-   21. Revelação em scroll
+   21. Movimento
+   Nada nasce escondido: todo conteúdo é legível no primeiro quadro, sem
+   depender de scroll. O movimento fica nos estados de hover e foco.
    -------------------------------------------------------------------------- */
-.rv { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.rv.is-in { opacity: 1; transform: none; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .rv { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 

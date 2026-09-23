@@ -59,24 +59,6 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ------------------------------------------------ revelação em scroll */
-  var reveals = document.querySelectorAll(".rv");
-  if (reveals.length) {
-    if (!("IntersectionObserver" in window)) {
-      Array.prototype.forEach.call(reveals, function (el) { el.classList.add("is-in"); });
-    } else {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        });
-      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-
-      Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
-    }
-  }
-
   /* ------------------------------------------------------------- questões */
   var quiz = document.querySelector("[data-quiz]");
 
